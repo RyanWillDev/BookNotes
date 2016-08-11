@@ -2,9 +2,9 @@
 
 // Revealing Module pattern returns an anonymous object with pointers to the private functionality
 
-var myRevealingModule = (function () {
+const myRevealingModule = (function () {
  
-        var privateVar = "Ben Cherry",
+        const privateVar = "Ben Cherry",
             publicVar = "Hey there!";
  
         function privateFunction() {

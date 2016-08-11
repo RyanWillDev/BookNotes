@@ -15,7 +15,7 @@
 // scope. Methods and or variables declared in the module are only availabe inside the module. Anything inside
 // the returning object are available to everyone.
 
-let testModule = (function () {
+const testModule = (function () {
  
   let counter = 0; // Since this is declared within the function's scope it is not accessible from outside.
  
