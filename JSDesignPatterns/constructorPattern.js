@@ -79,8 +79,8 @@ const oPerson = {
       accNumber: Math.floor(Math.random() * 2345),
     };
      return {
-      // Because this is contained within privates closure variable or method defined here
-      //will always have access to the data object, but no one else will.
+      // Because this is contained within private's closure variable or method defined here
+      // will always have access to the data object, but no one else will.
       get: function(key) {
       return data[key];
       }
