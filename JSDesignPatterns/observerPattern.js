@@ -7,7 +7,8 @@ Observer pattern -
 ========================================================================****/
 
 /****=================================================================================================== 
-Components of the Observer pattern 
+                                Components of the Observer pattern
+                                -----------------------------------
 * Subject - maintains a list of observers, facilitates adding or removing them
 * Observer - provides an update interface for objects that need to be notified of Subject's state changes
 * Concrete Subject - broadcasts notifications to observers on changes, stores state of Concrete Observers
@@ -80,3 +81,29 @@ let ObserverList = {
 
 let Subject = Object.create(ObserverList);
 Subject.init(); // initialize list
+
+/*=====================================================================================
+                            Observer vs Publish/Subscribe
+                            -----------------------------
+* Observer pattern requires the Observer to subscribe to the Subject firing the event
+* Pub/Sub uses topic/event channel to mediate between the Observer and Subject
+  ** Allows for definition of application specific events which can pass custom args
+  ** containing the values needed by the Subscriber. *** This avoids dependencies ****
+* The Pub/Sub method allows any Subscriber to implement a event handler to register 
+  ** notifications broadcasted by Publisher
+
+                                    Advantages
+                                  --------------
+* Requires you to think about relationships
+* Identify direct relationships that could be replaced with subjects and observers
+* Maintain consistency without being tightly coupled
+  ** An object can send a notification that something has changed without caring who
+  ** is relying on that notification. Think Redux.
+
+                                  Disadvantages
+                                -----------------
+* Can be hard to guarantee that parts of the app are functioning correctly
+* Subscribers are ignorant of other Subscribers 
+* Difficult to track dependencies between Publishers and Subscribers
+=======================================================================================*/
+
