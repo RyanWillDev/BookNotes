@@ -48,7 +48,59 @@ Car.prototype.toString = function() { // This single instance of toString will b
 
 let civic = new Car('Honda Civic', 2009, 20000);
 
+// You can use the Constructor pattern to simulate classes and private variables and methods
+function Person(props) {
+  this.name = props.name;
+  this.age = props.age;
+  let SSN = props.SSN;
+  this.getSSN = function() {
+    console.log(SSN);
+  }
+};
 
+let ryan = new Person({name: 'ryan', age: 26, SSN: 1234});
+
+console.log(ryan.SSN); // undefined
+
+ryan.getSSN(); // 1234
+
+
+// Using the OLOO pattern poplarized by Kyle Simpson.
+// I even spent the time to figure out how to simulate private data
+const oPerson = {
+  create: function(props) {
+    ({ name: this.name, age: this.age  } = props);
+    this.private = this.private(props); // Calls the private function inherited from oPerson
+    // and stores the results in the newly created objects private key.
+  }, 
+  private: function(props) {
+    let data = {
+      SSN: props.SSN,
+      accNumber: Math.floor(Math.random() * 2345),
+    };
+     return {
+      // Because this is contained within privates closure variable or method defined here
+      //will always have access to the data object, but no one else will.
+      get: function(key) {
+      return data[key];
+      }
+    };
+  },
+}
+
+let ryanProps = {
+  name: 'ryan',
+  age: 24,
+  SSN: 1234,
+};
+
+
+let ryan = Object.create(oPerson);
+ryan.create(ryanProps);
+
+console.log(ryan); // Object {name: "ryan", age: 24, private: Object}
+
+console.log(ryan.private.get('SSN')); // 1234
 
 
 
