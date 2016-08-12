@@ -65,7 +65,7 @@ console.log(ryan.SSN); // undefined
 ryan.getSSN(); // 1234
 
 
-// Using the OLOO pattern poplarized by Kyle Simpson.
+// Using the OLOO pattern popularized by Kyle Simpson.
 // I even spent the time to figure out how to simulate private data
 const oPerson = {
   create: function(props) {
