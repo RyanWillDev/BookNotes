@@ -90,7 +90,7 @@ const oPerson = {
 
 let ryanProps = {
   name: 'ryan',
-  age: 24,
+  age: 26,
   SSN: 1234,
 };
 
@@ -98,7 +98,7 @@ let ryanProps = {
 let ryan = Object.create(oPerson);
 ryan.create(ryanProps);
 
-console.log(ryan); // Object {name: "ryan", age: 24, private: Object}
+console.log(ryan); // Object {name: "ryan", age: 26, private: Object}
 
 console.log(ryan.private.get('SSN')); // 1234
 
